@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TCC HTML5 Game</title>
+        <link rel="stylesheet" href="style.css" > 
+    </head>
+    <body onload="initGame()">
+        <div id="game">
+            <canvas width="550px" height="310px" class="game_element"></canvas>
+            <div id="screen_blank" class="game_element"></div>
+            <div id="market_game_elements" class="game_element"></div>
+            <div id="jerboa_game_elements" class="game_element">
+                <div id="jerboa_board">
+                </div>
+                <div id="jerboa_ui_sidebar">
+                    <div id="jerboa_time" class="sidebar_section">
+                        <div id="jerboa_timer" class="panel">0:00</div>
+                        <div id="jerboa_pause" class="button"></div>
+                    </div>
+                    <div id="jerboa_turns" class="sidebar_section">
+                        <div id="jerboa_turns_title" class="header">turns left</div>
+                        <div id="jerboa_turns_turns" class="panel">0</div>
+                    </div>
+                    <div id="jerboa_score" class="sidebar_section">
+                        <div id="jerboa_score_title" class="header">score</div>
+                        <div id="jerboa_score_score" class="panel">0</div>
+                    </div>
+                    <div id="jerboa_inventory" class="sidebar_section">
+                        <div id="jerboa_inventory_header" class="header">inventory</div>
+                        <div id="jerboa_inventory_contents" class="panel"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="game.js"></script>
+    </body>
+</html>

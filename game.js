@@ -167,8 +167,6 @@ jerboaGame = {
         // jerboaGame.letJerboaEscape(jerboaGame.jerboasByName[e.target.attributes.name.value]);
         jerboaGame.progressJerboaMoveChain();
     }
-    
-
 }
 
 function JerboaType (x,y) {
@@ -263,6 +261,7 @@ function jerboaChain(firstJerboa) {
         var curX = this.last.jerboa.x + emptyCells;
         var curY = this.last.jerboa.y + emptyCells;
         var previouslyWalkedSpaces = [];
+        previouslyWalkedSpaces.push(this.first.jerboa);
         while (this.last.next === null) {
             curX += this.last.directionVector[0];
             curY += this.last.directionVector[1];
@@ -276,12 +275,13 @@ function jerboaChain(firstJerboa) {
                 };
                 this.last = this.last.next;
             }
-            else if ((!previouslyWalkedSpaces.includes(walkedSpace)) && walkedSpace.direction != "notAJerboa") { // skips over empty cells (that are specifically marked as such)
+            else if ((!previouslyWalkedSpaces.includes(walkedSpace)) && walkedSpace.direction != "notAJerboa" && !walkedSpace.inActiveMove) { // skips over empty cells (that are specifically marked as such)
                 this.last.next = new JerboaChainNode(walkedSpace);
                 this.chainSize++;
                 this.last.next.addedScore += this.chainSize * 3;
                 this.last.next.previous = this.last;
                 this.last = this.last.next;
+                walkedSpace.inActiveMove = true;
             }
             previouslyWalkedSpaces.push(walkedSpace);
         }
